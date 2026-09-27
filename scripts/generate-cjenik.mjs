@@ -57,7 +57,11 @@ async function dohvatiToken() {
     }),
   });
   if (!res.ok) {
-    throw new Error(`Neuspjesna prijava na Shopify (HTTP ${res.status}). ` +
+    // Shopify razlog vraca u JSON-u ili u <title> HTML stranice
+    // (npr. "Oauth error application_cannot_be_found"). Tijelo ne sadrzi tajne.
+    const tijelo = await res.text();
+    const razlog = tijelo.match(/<title>([^<]*)<\/title>/)?.[1] ?? tijelo.slice(0, 200);
+    throw new Error(`Neuspjesna prijava na Shopify (HTTP ${res.status}: ${razlog.trim()}). ` +
       'Provjeri Client ID i secret te je li aplikacija instalirana na trgovinu ' +
       'i pripada li istoj Shopify organizaciji.');
   }
