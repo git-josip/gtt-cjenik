@@ -62,11 +62,11 @@ Actions → *Objava cjenika* → Run workflow. Provjeri da se datoteke pojave i 
 
 ## Raspored
 
-Cron je postavljen na `30 4 * * 1-5` (UTC), što je 6:30 ljeti i 5:30 zimi po hrvatskom vremenu. Rok iz Odluke je 8:00, pa ima najmanje sat i pol zalihe — GitHubov raspoređivač zna kasniti i po pola sata.
+Dva crona (UTC): glavna objava `30 3 * * 1-5` (5:30 ljeti, 4:30 zimi) i kontrolna `30 4 * * 1-5` (6:30 ljeti, 5:30 zimi). Rok iz Odluke je 8:00. GitHubov raspoređivač zna kasniti i po pola sata, a rijetko i preskočiti pokretanje.
 
-Rezervni cron `0 5 * * 1-5` (7:00 ljeti, 6:00 zimi) pokriva preskočeno pokretanje. Zakazano pokretanje ne objavljuje ako u arhivi već postoji današnja datoteka; ručno pokretanje uvijek objavljuje.
+Zakazano pokretanje ne objavljuje ako u arhivi već postoji današnja datoteka, pa kontrolna objavi samo kad glavna nije prošla. Ručno pokretanje uvijek objavljuje.
 
-Vikendom se ne izvodi jer Odluka traži objavu svakog **radnog** dana. Ako želiš i vikende, promijeni u `30 4 * * *`.
+Vikendom se ne izvodi jer Odluka traži objavu svakog **radnog** dana. Ako želiš i vikende, u oba crona zamijeni `1-5` sa `*`.
 
 ## Arhiva
 

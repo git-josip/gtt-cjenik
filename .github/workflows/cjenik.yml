@@ -1,15 +1,14 @@
 name: Objava cjenika
 
 # Odluka NN 101/2026 traži objavu svakog radnog dana najkasnije do 8:00.
-# Cron je u UTC-u. 04:30 UTC = 06:30 ljeti (CEST) i 05:30 zimi (CET),
-# dakle najmanje sat i pol zalihe za kašnjenje GitHubova rasporeda.
-# Drugi cron (05:00 UTC = 07:00 ljeti, 06:00 zimi) je rezerva ako GitHub
-# preskoči prvi. Zakazano pokretanje se preskače ako je danas već objavljeno,
+# Cron je u UTC-u. Glavna objava 03:30 UTC = 05:30 ljeti (CEST), 04:30 zimi (CET).
+# Kontrolna 04:30 UTC = 06:30 ljeti, 05:30 zimi — rezerva ako GitHub
+# preskoči ili jako zakasni s glavnom; i ona ima sat i pol zalihe do 8:00. Zakazano pokretanje se preskače ako je danas već objavljeno,
 # ručno (workflow_dispatch) uvijek objavljuje.
 on:
   schedule:
+    - cron: '30 3 * * 1-5'
     - cron: '30 4 * * 1-5'
-    - cron: '0 5 * * 1-5'
   workflow_dispatch:
 
 permissions:
