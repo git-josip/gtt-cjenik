@@ -12,7 +12,7 @@
  *
  * Pokretanje: node scripts/generate-cjenik.mjs
  * Potrebne varijable okoline:
- *   SHOPIFY_STORE_DOMAIN   npr. xz1ihj-0i.myshopify.com
+ *   SHOPIFY_STORE_DOMAIN   npr. tvoja-trgovina.myshopify.com
  *   SHOPIFY_CLIENT_ID      Client ID aplikacije iz Dev Dashboarda
  *   SHOPIFY_CLIENT_SECRET  Client secret iste aplikacije
  *
@@ -32,6 +32,12 @@ const STORE = process.env.SHOPIFY_STORE_DOMAIN;
 const CLIENT_ID = process.env.SHOPIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SHOPIFY_CLIENT_SECRET;
 const API_VERSION = CONFIG.shopifyApiVersion;
+
+// Podaci o trgovcu su obvezni u objavi. Ne objavljujemo s nepopunjenim configom.
+if (Object.values(CONFIG.trgovac).some((v) => !v || v === 'TODO')) {
+  console.error('config.json: popuni trgovac.naziv, trgovac.oib i trgovac.adresa.');
+  process.exit(1);
+}
 
 if (!STORE || !CLIENT_ID || !CLIENT_SECRET) {
   console.error('Nedostaje SHOPIFY_STORE_DOMAIN, SHOPIFY_CLIENT_ID ili SHOPIFY_CLIENT_SECRET.');
@@ -309,7 +315,7 @@ function zapisiPopisArhive(dir) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arhiva cjenika — Green Tools TECH</title>
+<title>Arhiva cjenika — Pine Pottery</title>
 <style>
   :root {
     color-scheme: light dark;

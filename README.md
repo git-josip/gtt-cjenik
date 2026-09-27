@@ -1,10 +1,12 @@
-# Cjenik — Green Tools TECH
+# Cjenik — Pine Pottery
 
 Dnevna objava cjenika proizvoda prema **Odluci o objavi cjenika proizvoda i usluga kao mjeri izravne kontrole cijena** i **Odluci o isticanju dodatne cijene** (obje NN 101/2026, primjena od 1. 10. 2026.).
 
 Skripta povuče aktivne proizvode iz Shopifyja, zapiše `cjenik.csv` i `cjenik.xml` u `public/`, arhivira imenovanu kopiju i commita promjenu. Isti workflow onda objavi `public/` na GitHub Pages.
 
-Trenutna adresa: <https://zvone-greentoolstech.github.io/gtt-cjenik/>
+Adresa: <https://cjenik.pinepottery.art/> (webshop: <https://www.pinepottery.art>)
+
+Fork od [zvone-greentoolstech/gtt-cjenik](https://github.com/zvone-greentoolstech/gtt-cjenik).
 
 Nije pravni savjet — za granične slučajeve konzultirati knjigovođu ili HOK.
 
@@ -18,7 +20,7 @@ CSV je razdvojen točka-zarezom, u UTF-8 s BOM-om, s decimalnim zarezom i bez oz
 
 ### 1. Shopify aplikacija i vjerodajnice
 
-Od 1. 1. 2026. Shopify više ne dopušta stvaranje custom aplikacija iz admina, pa ide preko Dev Dashboarda: **Create app** → naziv `GTT cjenik` → dodaj opseg **`read_products`** (i ništa drugo) → **Release a version** → **Install** na trgovinu.
+Od 1. 1. 2026. Shopify više ne dopušta stvaranje custom aplikacija iz admina, pa ide preko Dev Dashboarda: **Create app** → naziv `Pine Pottery cjenik` → dodaj opseg **`read_products`** (i ništa drugo) → **Release a version** → **Install** na trgovinu.
 
 U postavkama aplikacije kopiraj **Client ID** i **Client secret**.
 
@@ -32,7 +34,7 @@ Repozitorij → Settings → Secrets and variables → Actions → New repositor
 
 | Ime | Vrijednost |
 |---|---|
-| `SHOPIFY_STORE_DOMAIN` | `xz1ihj-0i.myshopify.com` |
+| `SHOPIFY_STORE_DOMAIN` | `<trgovina>.myshopify.com` (ne `pinepottery.art`) |
 | `SHOPIFY_CLIENT_ID` | Client ID iz koraka 1 |
 | `SHOPIFY_CLIENT_SECRET` | Client secret iz koraka 1 |
 
@@ -42,12 +44,10 @@ Repozitorij mora biti **public** — Pages na besplatnom planu ne radi za privat
 
 Settings → Pages → Source: **GitHub Actions**. Ništa više; objavu radi workflow, korakom `upload-pages-artifact` + `deploy-pages`.
 
-### 4. Poddomena (neobavezno)
+### 4. Poddomena
 
-Odluka ne propisuje adresu, pa je `github.io` adresa sasvim u redu. Za ljepšu adresu:
-
-1. Kod registrara domene dodaj CNAME zapis `cjenik` → `zvone-greentoolstech.github.io`.
-2. Settings → Pages → Custom domain → `cjenik.greentools.tech` → Save.
+1. Kod registrara (name.com) CNAME zapis `cjenik` → `git-josip.github.io`.
+2. Settings → Pages → Custom domain → `cjenik.pinepottery.art` → Save.
 3. Kad certifikat izađe, uključi *Enforce HTTPS*.
 
 Redoslijed je bitan: postavljanje domene prije nego DNS zapis proradi obori postojeću adresu.
@@ -90,9 +90,9 @@ Vrijednost je cijena zatečena **10. 9. 2026.** i **ne mijenja se** kad se promi
 
 ## Barkod
 
-Stupac `barkod` je namjerno prazan za sve artikle. Green Tools TECH proizvodi vlastite alate i prodaje ih izravno, bez posredovanja maloprodajnih lanaca koji traže GTIN/EAN oznake, pa ih artikli nemaju. Odluka traži da stupac postoji, a on postoji i ostaje prazan jer podatka nema. Upisivanje izmišljene oznake bilo bi netočno, pa se ne radi.
+Stupac `barkod` puni se iz Shopify polja *Barcode* varijante. Ručno izrađena keramika u pravilu nema GTIN/EAN oznake, pa stupac ostaje prazan. Odluka traži da stupac postoji, a on postoji i ostaje prazan jer podatka nema. Upisivanje izmišljene oznake bilo bi netočno, pa se ne radi.
 
-Ako GTT jednom uvede EAN oznake, dovoljno ih je upisati u Shopify i sljedeća objava ih pokupi bez ikakve izmjene skripte.
+Ako se jednom uvedu EAN oznake, dovoljno ih je upisati u Shopify i sljedeća objava ih pokupi bez ikakve izmjene skripte.
 
 ## Napomena o `public/_headers`
 
@@ -113,7 +113,7 @@ Na kraju svakog izvođenja ispisuje upozorenja za proizvode bez sidrene cijene, 
 ## Lokalno pokretanje
 
 ```bash
-export SHOPIFY_STORE_DOMAIN=xz1ihj-0i.myshopify.com
+export SHOPIFY_STORE_DOMAIN=<trgovina>.myshopify.com
 export SHOPIFY_CLIENT_ID=...
 export SHOPIFY_CLIENT_SECRET=...
 npm run generate
@@ -121,6 +121,4 @@ npm run generate
 
 ## Stanje
 
-Postavljeno i provjereno 23. 9. 2026.: repozitorij je public, Pages objavljuje iz Actionsa, cjenik i arhiva su dostupni na github.io adresi, a automatizirano preuzimanje s druge domene radi.
-
-Otvoreno: CNAME zapis za `cjenik.greentools.tech` i link u podnožju webshopa.
+Fork postavljen 27. 9. 2026. Arhiva i brojač pohrane resetirani (GTT podaci obrisani). Podaci o trgovcu popunjeni u `config.json`.
