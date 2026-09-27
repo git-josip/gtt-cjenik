@@ -64,6 +64,8 @@ Actions → *Objava cjenika* → Run workflow. Provjeri da se datoteke pojave i 
 
 Cron je postavljen na `30 4 * * 1-5` (UTC), što je 6:30 ljeti i 5:30 zimi po hrvatskom vremenu. Rok iz Odluke je 8:00, pa ima najmanje sat i pol zalihe — GitHubov raspoređivač zna kasniti i po pola sata.
 
+Rezervni cron `0 5 * * 1-5` (7:00 ljeti, 6:00 zimi) pokriva preskočeno pokretanje. Zakazano pokretanje ne objavljuje ako u arhivi već postoji današnja datoteka; ručno pokretanje uvijek objavljuje.
+
 Vikendom se ne izvodi jer Odluka traži objavu svakog **radnog** dana. Ako želiš i vikende, promijeni u `30 4 * * *`.
 
 ## Arhiva

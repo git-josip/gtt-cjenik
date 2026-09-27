@@ -3,9 +3,13 @@ name: Objava cjenika
 # Odluka NN 101/2026 traži objavu svakog radnog dana najkasnije do 8:00.
 # Cron je u UTC-u. 04:30 UTC = 06:30 ljeti (CEST) i 05:30 zimi (CET),
 # dakle najmanje sat i pol zalihe za kašnjenje GitHubova rasporeda.
+# Drugi cron (05:00 UTC = 07:00 ljeti, 06:00 zimi) je rezerva ako GitHub
+# preskoči prvi. Zakazano pokretanje se preskače ako je danas već objavljeno,
+# ručno (workflow_dispatch) uvijek objavljuje.
 on:
   schedule:
     - cron: '30 4 * * 1-5'
+    - cron: '0 5 * * 1-5'
   workflow_dispatch:
 
 permissions:
@@ -25,14 +29,29 @@ env:
 jobs:
   pripremi:
     runs-on: ubuntu-latest
+    outputs:
+      preskoci: ${{ steps.provjera.outputs.preskoci }}
     steps:
       - uses: actions/checkout@v4
 
+      # concurrency ceka da prethodni run zavrsi, pa checkout vec vidi
+      # danasnju arhivu ako je objava prosla.
+      - name: Provjeri je li danas već objavljeno
+        id: provjera
+        if: github.event_name == 'schedule'
+        run: |
+          if ls public/arhiva/*_"$(date +%Y%m%d)"-*.csv >/dev/null 2>&1; then
+            echo "Danas je već objavljeno, preskačem."
+            echo "preskoci=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/setup-node@v4
+        if: steps.provjera.outputs.preskoci != 'true'
         with:
           node-version: '22'
 
       - name: Generiraj cjenik
+        if: steps.provjera.outputs.preskoci != 'true'
         env:
           SHOPIFY_STORE_DOMAIN: ${{ secrets.SHOPIFY_STORE_DOMAIN }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
@@ -40,6 +59,7 @@ jobs:
         run: node scripts/generate-cjenik.mjs
 
       - name: Commitaj objavu
+        if: steps.provjera.outputs.preskoci != 'true'
         run: |
           git config user.name  "cjenik-bot"
           git config user.email "cjenik-bot@users.noreply.github.com"
@@ -52,12 +72,14 @@ jobs:
           fi
 
       - name: Spremi za objavu
+        if: steps.provjera.outputs.preskoci != 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
 
   objavi:
     needs: pripremi
+    if: needs.pripremi.outputs.preskoci != 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
