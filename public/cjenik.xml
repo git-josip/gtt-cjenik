@@ -8,8 +8,8 @@
   <objava>
     <oblik_prodajnog_objekta>internetska trgovina</oblik_prodajnog_objekta>
     <oznaka_objekta>pinepottery.art</oznaka_objekta>
-    <broj_pohrane>26</broj_pohrane>
-    <datum_vrijeme>2026-10-30T10:17:34.600Z</datum_vrijeme>
+    <broj_pohrane>27</broj_pohrane>
+    <datum_vrijeme>2026-11-02T11:30:07.596Z</datum_vrijeme>
   </objava>
   <proizvod>
     <naziv_proizvoda>Beach espresso cup</naziv_proizvoda>
@@ -38,7 +38,7 @@
     <dostupnost>nedostupno</dostupnost>
   </proizvod>
   <proizvod>
-    <naziv_proizvoda>Capers oil bottle</naziv_proizvoda>
+    <naziv_proizvoda>Capers olive oil bottle</naziv_proizvoda>
     <sifra_proizvoda>COB</sifra_proizvoda>
     <marka>Pine Pottery</marka>
     <neto_kolicina_jedinica_mjere>1 kom</neto_kolicina_jedinica_mjere>
@@ -103,7 +103,7 @@
     <dostupnost>dostupno</dostupnost>
   </proizvod>
   <proizvod>
-    <naziv_proizvoda>Deep Blue oil bottle</naziv_proizvoda>
+    <naziv_proizvoda>Deep Blue olive oil bottle</naziv_proizvoda>
     <sifra_proizvoda>DBOB</sifra_proizvoda>
     <marka>Pine Pottery</marka>
     <neto_kolicina_jedinica_mjere>1 kom</neto_kolicina_jedinica_mjere>
@@ -142,7 +142,7 @@
     <dostupnost>nedostupno</dostupnost>
   </proizvod>
   <proizvod>
-    <naziv_proizvoda>Green Pine oil bottle</naziv_proizvoda>
+    <naziv_proizvoda>Green Pine olive oil bottle</naziv_proizvoda>
     <sifra_proizvoda>POB2</sifra_proizvoda>
     <marka>Pine Pottery</marka>
     <neto_kolicina_jedinica_mjere>1 kom</neto_kolicina_jedinica_mjere>
@@ -207,7 +207,7 @@
     <dostupnost>dostupno</dostupnost>
   </proizvod>
   <proizvod>
-    <naziv_proizvoda>Lavender oil bottle</naziv_proizvoda>
+    <naziv_proizvoda>Lavender olive oil bottle</naziv_proizvoda>
     <sifra_proizvoda>LOB</sifra_proizvoda>
     <marka>Pine Pottery</marka>
     <neto_kolicina_jedinica_mjere>1 kom</neto_kolicina_jedinica_mjere>
@@ -337,7 +337,7 @@
     <dostupnost>nedostupno</dostupnost>
   </proizvod>
   <proizvod>
-    <naziv_proizvoda>Rosemary oil bottle</naziv_proizvoda>
+    <naziv_proizvoda>Rosemary olive oil bottle</naziv_proizvoda>
     <sifra_proizvoda>ROB</sifra_proizvoda>
     <marka>Pine Pottery</marka>
     <neto_kolicina_jedinica_mjere>1 kom</neto_kolicina_jedinica_mjere>
@@ -386,7 +386,7 @@
     <naziv_posebnog_oblika_prodaje></naziv_posebnog_oblika_prodaje>
     <sidrena_cijena>45,00</sidrena_cijena>
     <barkod></barkod>
-    <dostupnost>dostupno</dostupnost>
+    <dostupnost>nedostupno</dostupnost>
   </proizvod>
   <proizvod>
     <naziv_proizvoda>Sea plate</naziv_proizvoda>
@@ -428,7 +428,7 @@
     <dostupnost>dostupno</dostupnost>
   </proizvod>
   <proizvod>
-    <naziv_proizvoda>Waves oil bottle</naziv_proizvoda>
+    <naziv_proizvoda>Waves olive oil bottle</naziv_proizvoda>
     <sifra_proizvoda>WOB</sifra_proizvoda>
     <marka>Pine Pottery</marka>
     <neto_kolicina_jedinica_mjere>1 kom</neto_kolicina_jedinica_mjere>
