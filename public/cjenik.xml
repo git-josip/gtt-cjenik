@@ -8,8 +8,8 @@
   <objava>
     <oblik_prodajnog_objekta>internetska trgovina</oblik_prodajnog_objekta>
     <oznaka_objekta>pinepottery.art</oznaka_objekta>
-    <broj_pohrane>31</broj_pohrane>
-    <datum_vrijeme>2026-11-06T11:14:47.841Z</datum_vrijeme>
+    <broj_pohrane>32</broj_pohrane>
+    <datum_vrijeme>2026-11-09T11:54:43.323Z</datum_vrijeme>
   </objava>
   <proizvod>
     <naziv_proizvoda>Beach espresso cup</naziv_proizvoda>
@@ -72,7 +72,7 @@
     <maloprodajna_cijena>29,00</maloprodajna_cijena>
     <poseban_oblik_prodaje>NE</poseban_oblik_prodaje>
     <naziv_posebnog_oblika_prodaje></naziv_posebnog_oblika_prodaje>
-    <sidrena_cijena>28,00</sidrena_cijena>
+    <sidrena_cijena>29,00</sidrena_cijena>
     <barkod></barkod>
     <dostupnost>nedostupno</dostupnost>
   </proizvod>
@@ -85,7 +85,7 @@
     <maloprodajna_cijena>28,00</maloprodajna_cijena>
     <poseban_oblik_prodaje>NE</poseban_oblik_prodaje>
     <naziv_posebnog_oblika_prodaje></naziv_posebnog_oblika_prodaje>
-    <sidrena_cijena>21,00</sidrena_cijena>
+    <sidrena_cijena>28,00</sidrena_cijena>
     <barkod></barkod>
     <dostupnost>dostupno</dostupnost>
   </proizvod>
@@ -191,7 +191,7 @@
     <naziv_posebnog_oblika_prodaje></naziv_posebnog_oblika_prodaje>
     <sidrena_cijena>33,00</sidrena_cijena>
     <barkod></barkod>
-    <dostupnost>dostupno</dostupnost>
+    <dostupnost>nedostupno</dostupnost>
   </proizvod>
   <proizvod>
     <naziv_proizvoda>Latte Waves cup</naziv_proizvoda>
@@ -204,7 +204,7 @@
     <naziv_posebnog_oblika_prodaje></naziv_posebnog_oblika_prodaje>
     <sidrena_cijena>35,00</sidrena_cijena>
     <barkod></barkod>
-    <dostupnost>dostupno</dostupnost>
+    <dostupnost>nedostupno</dostupnost>
   </proizvod>
   <proizvod>
     <naziv_proizvoda>Lavender olive oil bottle</naziv_proizvoda>
@@ -423,7 +423,7 @@
     <maloprodajna_cijena>28,00</maloprodajna_cijena>
     <poseban_oblik_prodaje>NE</poseban_oblik_prodaje>
     <naziv_posebnog_oblika_prodaje></naziv_posebnog_oblika_prodaje>
-    <sidrena_cijena>21,00</sidrena_cijena>
+    <sidrena_cijena>28,00</sidrena_cijena>
     <barkod></barkod>
     <dostupnost>dostupno</dostupnost>
   </proizvod>
